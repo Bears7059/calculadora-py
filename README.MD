@@ -24,7 +24,7 @@ cd calculadora-py
 
 Abre el archivo:
 
-index.html
+calculadora.html
 
 
 (Opcional) Si usas VS Code, abre con Live Server:
