@@ -2,12 +2,11 @@ function append(value) {
     const display = document.getElementById("display");
     const lastChar = display.value.slice(-1);
 
-    
     const operadores = ["+", "-", "*", "/", "."];
 
     
     if (operadores.includes(value) && operadores.includes(lastChar)) {
-        return; 
+        return;
     }
 
     display.value += value;
@@ -25,12 +24,19 @@ function calculate() {
         return;
     }
 
+    
+    if (display.value.includes("/0")) {
+        display.value = "Error";
+        return;
+    }
+
     try {
         display.value = eval(display.value);
     } catch {
         display.value = "Error";
     }
 }
+
 
 document.addEventListener("keydown", function (event) {
     const display = document.getElementById("display");
@@ -45,4 +51,3 @@ document.addEventListener("keydown", function (event) {
         calculate();
     }
 });
-
