@@ -2,6 +2,7 @@ function append(value) {
     const display = document.getElementById("display");
     const lastChar = display.value.slice(-1);
 
+    
     const operadores = ["+", "-", "*", "/", "."];
 
     
@@ -19,9 +20,29 @@ function clearDisplay() {
 function calculate() {
     const display = document.getElementById("display");
 
+    
+    if (display.value === "Error") {
+        return;
+    }
+
     try {
         display.value = eval(display.value);
     } catch {
         display.value = "Error";
     }
 }
+
+document.addEventListener("keydown", function (event) {
+    const display = document.getElementById("display");
+
+    if (event.key === "Enter") {
+
+        if (display.value === "Error") {
+            event.preventDefault();
+            return;
+        }
+
+        calculate();
+    }
+});
+
